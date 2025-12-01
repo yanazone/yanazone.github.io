@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hostmann Shop</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(to bottom, #1a4d3a 0%, #0f2e1f 50%, #051a0f 100%);
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: linear-gradient(to bottom, transparent 0%, #020d07 100%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .panels-wrapper {
+            position: relative;
+            z-index: 1;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            margin-top: 40px;
+            margin-bottom: 30px;
+        }
+
+        .faq-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #1a4d3a;
+            text-align: center;
+        }
+
+        .text-section {
+            margin-bottom: 40px;
+            font-size: 1.1em;
+            color: #555;
+            text-align: center;
+        }
+
+        .links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 0;
+            flex-wrap: wrap;
+        }
+
+        .link-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #2d6a4f;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 1em;
+        }
+
+        .link-button:hover {
+            background: #1a4d3a;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .link-button.discord {
+            background: #5865F2;
+        }
+
+        .link-button.discord:hover {
+            background: #4752C4;
+        }
+
+        .link-button.itch {
+            background: #fa5c5c;
+        }
+
+        .link-button.itch:hover {
+            background: #e04848;
+        }
+
+        .faq-section {
+            margin-top: 0;
+        }
+
+        .faq-title {
+            font-size: 2em;
+            margin-bottom: 30px;
+            color: #1a4d3a;
+            text-align: center;
+        }
+
+        .faq-item {
+            margin-bottom: 25px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .faq-answer {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+
+            .container,
+            .faq-container {
+                padding: 25px 20px;
+                margin-top: 20px;
+                margin-bottom: 20px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .faq-title {
+                font-size: 1.6em;
+            }
+
+            .links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .link-button {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .text-section {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="panels-wrapper">
+        <div class="container">
+            <h1>Welcome to Hostmann Shop</h1>
+            
+            <div class="text-section">
+                <p>Your one-stop destination for amazing games and digital content. Join our community and discover exciting new experiences!</p>
+            </div>
+
+            <div class="links">
+                <a href="https://discord.gg/placeholder" class="link-button discord" target="_blank">Join Discord</a>
+                <a href="https://placeholder.itch.io" class="link-button itch" target="_blank">Visit Itch.io</a>
+            </div>
+        </div>
+
+        <div class="faq-container">
+            <div class="faq-section">
+                <h2 class="faq-title">Frequently Asked Questions</h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">What is Hostmann Shop?</div>
+                    <div class="faq-answer">Hostmann Shop is a platform where you can discover and access various digital content and games. We're building a community of creators and players.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">How do I join the Discord?</div>
+                    <div class="faq-answer">Simply click on the "Join Discord" button above to join our community server. We'd love to have you!</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Where can I find your games?</div>
+                    <div class="faq-answer">You can find our games and projects on our Itch.io page. Click the "Visit Itch.io" button to explore our collection.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">How can I get support?</div>
+                    <div class="faq-answer">The best way to get support is through our Discord server. Our community and team members are always happy to help!</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
