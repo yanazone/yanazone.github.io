@@ -1,111 +1,270 @@
-1. Switch Basics (Layer 2)
-```
-enable
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Configuration Cheat Sheet</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+        }
+        
+        body {
+            background-color: #1a1a2e;
+            color: #e0e0e0;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #4cc9f0;
+        }
+        
+        h1 {
+            color: #4cc9f0;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #a9a9a9;
+            font-style: italic;
+        }
+        
+        .section {
+            background-color: #162447;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-left: 5px solid #4361ee;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s;
+        }
+        
+        .section:hover {
+            transform: translateY(-3px);
+        }
+        
+        h2 {
+            color: #4361ee;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        h2::before {
+            content: "";
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background-color: #4361ee;
+            margin-right: 10px;
+            border-radius: 50%;
+        }
+        
+        pre {
+            background-color: #0f3460;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 10px 0;
+            border: 1px solid #1e5f8a;
+        }
+        
+        code {
+            color: #f72585;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+        }
+        
+        .command {
+            color: #4cc9f0;
+        }
+        
+        .comment {
+            color: #a9a9a9;
+            font-style: italic;
+        }
+        
+        .verify {
+            background-color: #1b4332;
+            border-left: 5px solid #2d6a4f;
+        }
+        
+        .verify h2 {
+            color: #2d6a4f;
+        }
+        
+        .verify h2::before {
+            background-color: #2d6a4f;
+        }
+        
+        .emergency {
+            background-color: #590d22;
+            border-left: 5px solid #c9184a;
+        }
+        
+        .emergency h2 {
+            color: #c9184a;
+        }
+        
+        .emergency h2::before {
+            background-color: #c9184a;
+        }
+        
+        .note {
+            background-color: #3c096c;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            border-left: 5px solid #9d4edd;
+        }
+        
+        .checklist {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        
+        .checklist li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .checklist li::before {
+            content: "✓";
+            color: #4cc9f0;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #4cc9f0;
+            color: #a9a9a9;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .section {
+                padding: 15px;
+            }
+            
+            pre {
+                font-size: 0.9rem;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Network Configuration Cheat Sheet</h1>
+        <p class="subtitle">Cisco Switch & Router Configuration Commands</p>
+    </header>
+    
+    <main>
+        <div class="section">
+            <h2>1. Switch Basics (Layer 2)</h2>
+            <pre><code class="command">enable
 configure terminal
 hostname SW1
-no ip domain-lookup
-```
-Check status:
-```
-show interfaces status
-show running-config
-```
-
-⸻
-
-2. VLANs
-```
-configure terminal
+no ip domain-lookup</code></pre>
+            <p class="comment">Check status:</p>
+            <pre><code class="command">show interfaces status
+show running-config</code></pre>
+        </div>
+        
+        <div class="section">
+            <h2>2. VLANs</h2>
+            <pre><code class="command">configure terminal
 vlan 10
  name USERS
 vlan 20
  name SERVERS
-exit
-```
-Verify:
-```
-show vlan brief
-```
-
-⸻
-
-3. Access Ports
-```
-configure terminal
+exit</code></pre>
+            <div class="verify">
+                <h2>Verify:</h2>
+                <pre><code class="command">show vlan brief</code></pre>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>3. Access Ports</h2>
+            <pre><code class="command">configure terminal
 interface f0/1
  switchport mode access
  switchport access vlan 10
  no shutdown
-exit
-```
-Multiple ports:
-```
-interface range f0/1 - 10
+exit</code></pre>
+            <p class="comment">Multiple ports:</p>
+            <pre><code class="command">interface range f0/1 - 10
  switchport mode access
- switchport access vlan 10
-```
-
-⸻
-
-4. Trunk Ports
-```
-configure terminal
+ switchport access vlan 10</code></pre>
+        </div>
+        
+        <div class="section">
+            <h2>4. Trunk Ports</h2>
+            <pre><code class="command">configure terminal
 interface g0/1
  switchport mode trunk
  switchport trunk allowed vlan 10,20
  no shutdown
-exit
-```
-Verify:
-```
-show interfaces trunk
-```
-
-⸻
-
-5. Switch Management IP (SVI)
-```
-configure terminal
+exit</code></pre>
+            <div class="verify">
+                <h2>Verify:</h2>
+                <pre><code class="command">show interfaces trunk</code></pre>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>5. Switch Management IP (SVI)</h2>
+            <pre><code class="command">configure terminal
 interface vlan 10
  ip address 192.168.10.2 255.255.255.0
  no shutdown
 exit
-ip default-gateway 192.168.10.1
-```
-
-⸻
-
-6. Router Basics
-```
-enable
+ip default-gateway 192.168.10.1</code></pre>
+        </div>
+        
+        <div class="section">
+            <h2>6. Router Basics</h2>
+            <pre><code class="command">enable
 configure terminal
 hostname R1
-no ip domain-lookup
-```
-Interface:
-```
-interface g0/0
+no ip domain-lookup</code></pre>
+            <p class="comment">Interface:</p>
+            <pre><code class="command">interface g0/0
  ip address 192.168.1.1 255.255.255.0
  no shutdown
-exit
-```
-Verify:
-```
-show ip interface brief
-```
-
-⸻
-
-7. Router-on-a-Stick (Inter-VLAN Routing)
-```
-configure terminal
+exit</code></pre>
+            <div class="verify">
+                <h2>Verify:</h2>
+                <pre><code class="command">show ip interface brief</code></pre>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>7. Router-on-a-Stick (Inter-VLAN Routing)</h2>
+            <pre><code class="command">configure terminal
 interface g0/0
  no shutdown
-exit
-```
-VLAN subinterfaces:
-```
-interface g0/0.10
+exit</code></pre>
+            <p class="comment">VLAN subinterfaces:</p>
+            <pre><code class="command">interface g0/0.10
  encapsulation dot1Q 10
  ip address 192.168.10.1 255.255.255.0
 exit
@@ -113,98 +272,89 @@ exit
 interface g0/0.20
  encapsulation dot1Q 20
  ip address 192.168.20.1 255.255.255.0
-exit
-```
-
-⸻
-
-8. DHCP on Router
-
-Exclude gateways:
-```
-ip dhcp excluded-address 192.168.10.1 192.168.10.10
-ip dhcp excluded-address 192.168.20.1 192.168.20.10
-```
-Pools:
-```
-ip dhcp pool VLAN10
+exit</code></pre>
+        </div>
+        
+        <div class="section">
+            <h2>8. DHCP on Router</h2>
+            <p class="comment">Exclude gateways:</p>
+            <pre><code class="command">ip dhcp excluded-address 192.168.10.1 192.168.10.10
+ip dhcp excluded-address 192.168.20.1 192.168.20.10</code></pre>
+            <p class="comment">Pools:</p>
+            <pre><code class="command">ip dhcp pool VLAN10
  network 192.168.10.0 255.255.255.0
  default-router 192.168.10.1
  dns-server 8.8.8.8
-exit
-```
-```
-ip dhcp pool VLAN20
+exit</code></pre>
+            <pre><code class="command">ip dhcp pool VLAN20
  network 192.168.20.0 255.255.255.0
  default-router 192.168.20.1
  dns-server 8.8.8.8
-exit
-```
-Verify:
-```
-show ip dhcp binding
-show ip dhcp pool
-```
-
-⸻
-
-9. Static Routing
-
-Default route:
-```
-ip route 0.0.0.0 0.0.0.0 192.168.1.254
-```
-Specific route:
-```
-ip route 10.0.0.0 255.255.255.0 192.168.1.2
-```
-Verify:
-```
-show ip route
-```
-
-⸻
-
-10. PC Side (Packet Tracer)
-
-DHCP
-
-Desktop → IP Configuration → DHCP
-
-Static
-```
-IP Address: 192.168.10.50
+exit</code></pre>
+            <div class="verify">
+                <h2>Verify:</h2>
+                <pre><code class="command">show ip dhcp binding
+show ip dhcp pool</code></pre>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>9. Static Routing</h2>
+            <p class="comment">Default route:</p>
+            <pre><code class="command">ip route 0.0.0.0 0.0.0.0 192.168.1.254</code></pre>
+            <p class="comment">Specific route:</p>
+            <pre><code class="command">ip route 10.0.0.0 255.255.255.0 192.168.1.2</code></pre>
+            <div class="verify">
+                <h2>Verify:</h2>
+                <pre><code class="command">show ip route</code></pre>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>10. PC Side (Packet Tracer)</h2>
+            <p><strong>DHCP</strong></p>
+            <p>Desktop → IP Configuration → DHCP</p>
+            <p><strong>Static</strong></p>
+            <pre><code>IP Address: 192.168.10.50
 Subnet Mask: 255.255.255.0
 Default Gateway: 192.168.10.1
-DNS: 8.8.8.8
-```
-
-⸻
-
-11. Verification Commands (Spam These)
-```
-ping 192.168.10.1
+DNS: 8.8.8.8</code></pre>
+        </div>
+        
+        <div class="section">
+            <h2>11. Verification Commands (Spam These)</h2>
+            <pre><code class="command">ping 192.168.10.1
 ping 192.168.20.1
 ping 8.8.8.8
 
 show vlan brief
 show interfaces trunk
 show ip interface brief
-show running-config
-```
-
-⸻
-
-12. Emergency Fix Checklist (aka “why isn’t it working”)
-```
-show interfaces status
+show running-config</code></pre>
+        </div>
+        
+        <div class="section emergency">
+            <h2>12. Emergency Fix Checklist (aka "why isn't it working")</h2>
+            <pre><code class="command">show interfaces status
 show vlan brief
 show ip route
-show ip dhcp binding
-```
-Check for:
-	•	Missing no shutdown
-	•	Wrong VLAN
-	•	Trunk not trunking
-	•	Gateway mismatch
-	•	DHCP network mismatch
+show ip dhcp binding</code></pre>
+            <div class="note">
+                <p><strong>Check for:</strong></p>
+                <ul class="checklist">
+                    <li>Missing <code>no shutdown</code></li>
+                    <li>Wrong VLAN</li>
+                    <li>Trunk not trunking</li>
+                    <li>Gateway mismatch</li>
+                    <li>DHCP network mismatch</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <p>Network Configuration Cheat Sheet | For Cisco IOS devices</p>
+        <p>Commands may vary slightly depending on IOS version</p>
+    </footer>
+</body>
+</html>
