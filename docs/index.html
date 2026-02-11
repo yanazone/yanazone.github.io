@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Network Configuration Cheat Sheet</title>
+    <title>Network Services Configuration Cheat Sheet</title>
     <style>
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
         
         body {
-            background-color: #1a1a2e;
-            color: #e0e0e0;
+            background-color: #f5f7fa;
+            color: #333;
             line-height: 1.6;
             padding: 20px;
             max-width: 1200px;
@@ -22,108 +22,89 @@
         }
         
         header {
-            text-align: center;
             margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 2px solid #4cc9f0;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #3498db;
         }
         
         h1 {
-            color: #4cc9f0;
-            margin-bottom: 10px;
+            color: #2c3e50;
+            margin-bottom: 5px;
         }
         
         .subtitle {
-            color: #a9a9a9;
-            font-style: italic;
+            color: #7f8c8d;
+            font-size: 1.1rem;
         }
         
         .section {
-            background-color: #162447;
-            border-radius: 8px;
+            background-color: white;
+            border-radius: 6px;
             padding: 20px;
-            margin-bottom: 25px;
-            border-left: 5px solid #4361ee;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-            transition: transform 0.2s;
-        }
-        
-        .section:hover {
-            transform: translateY(-3px);
+            margin-bottom: 20px;
+            border: 1px solid #e1e8ed;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
         
         h2 {
-            color: #4361ee;
+            color: #2980b9;
             margin-bottom: 15px;
-            display: flex;
-            align-items: center;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #ecf0f1;
+            font-size: 1.3rem;
         }
         
-        h2::before {
-            content: "";
-            display: inline-block;
-            width: 12px;
-            height: 12px;
-            background-color: #4361ee;
-            margin-right: 10px;
-            border-radius: 50%;
+        h3 {
+            color: #2c3e50;
+            margin: 15px 0 10px 0;
+            font-size: 1.1rem;
+        }
+        
+        pre, code {
+            background-color: #f8f9fa;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            border-radius: 4px;
         }
         
         pre {
-            background-color: #0f3460;
             padding: 15px;
-            border-radius: 5px;
             overflow-x: auto;
             margin: 10px 0;
-            border: 1px solid #1e5f8a;
+            border: 1px solid #e1e8ed;
         }
         
         code {
-            color: #f72585;
-            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            padding: 2px 6px;
+            font-size: 0.9rem;
+            color: #c7254e;
         }
         
         .command {
-            color: #4cc9f0;
-        }
-        
-        .comment {
-            color: #a9a9a9;
-            font-style: italic;
-        }
-        
-        .verify {
-            background-color: #1b4332;
-            border-left: 5px solid #2d6a4f;
-        }
-        
-        .verify h2 {
-            color: #2d6a4f;
-        }
-        
-        .verify h2::before {
-            background-color: #2d6a4f;
-        }
-        
-        .emergency {
-            background-color: #590d22;
-            border-left: 5px solid #c9184a;
-        }
-        
-        .emergency h2 {
-            color: #c9184a;
-        }
-        
-        .emergency h2::before {
-            background-color: #c9184a;
+            color: #2980b9;
         }
         
         .note {
-            background-color: #3c096c;
-            padding: 15px;
-            border-radius: 5px;
+            background-color: #f8f9fa;
+            padding: 12px;
+            border-radius: 4px;
             margin-top: 15px;
-            border-left: 5px solid #9d4edd;
+            border-left: 4px solid #3498db;
+        }
+        
+        .warning {
+            background-color: #fff3cd;
+            padding: 12px;
+            border-radius: 4px;
+            margin-top: 15px;
+            border-left: 4px solid #ffc107;
+        }
+        
+        .tip {
+            background-color: #d1ecf1;
+            padding: 12px;
+            border-radius: 4px;
+            margin-top: 15px;
+            border-left: 4px solid #17a2b8;
         }
         
         .checklist {
@@ -139,24 +120,72 @@
         
         .checklist li::before {
             content: "✓";
-            color: #4cc9f0;
+            color: #27ae60;
             position: absolute;
             left: 0;
             font-weight: bold;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background-color: white;
+        }
+        
+        th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+            text-align: left;
+            padding: 12px;
+            border-bottom: 2px solid #e1e8ed;
+        }
+        
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #e1e8ed;
+        }
+        
+        .step-number {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 24px;
+            margin-right: 10px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .grid-item {
+            background-color: white;
+            padding: 15px;
+            border-radius: 6px;
+            border: 1px solid #e1e8ed;
         }
         
         footer {
             text-align: center;
             margin-top: 40px;
             padding-top: 20px;
-            border-top: 1px solid #4cc9f0;
-            color: #a9a9a9;
+            border-top: 1px solid #ecf0f1;
+            color: #7f8c8d;
             font-size: 0.9rem;
         }
         
         @media (max-width: 768px) {
             body {
-                padding: 10px;
+                padding: 15px;
             }
             
             .section {
@@ -164,186 +193,207 @@
             }
             
             pre {
-                font-size: 0.9rem;
-                padding: 10px;
+                font-size: 0.85rem;
+                padding: 12px;
+            }
+            
+            .grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Network Configuration Cheat Sheet</h1>
-        <p class="subtitle">Cisco Switch & Router Configuration Commands</p>
+        <h1>Network Services Configuration Cheat Sheet</h1>
+        <p class="subtitle">Cisco Switch, Router, DNS, and Email Server Configurations</p>
     </header>
     
     <main>
         <div class="section">
-            <h2>1. Switch Basics (Layer 2)</h2>
-            <pre><code class="command">enable
-configure terminal
-hostname SW1
-no ip domain-lookup</code></pre>
-            <p class="comment">Check status:</p>
-            <pre><code class="command">show interfaces status
-show running-config</code></pre>
-        </div>
-        
-        <div class="section">
-            <h2>2. VLANs</h2>
-            <pre><code class="command">configure terminal
-vlan 10
- name USERS
-vlan 20
- name SERVERS
-exit</code></pre>
-            <div class="verify">
-                <h2>Verify:</h2>
-                <pre><code class="command">show vlan brief</code></pre>
-            </div>
-        </div>
-        
-        <div class="section">
-            <h2>3. Access Ports</h2>
-            <pre><code class="command">configure terminal
-interface f0/1
- switchport mode access
- switchport access vlan 10
- no shutdown
-exit</code></pre>
-            <p class="comment">Multiple ports:</p>
-            <pre><code class="command">interface range f0/1 - 10
- switchport mode access
- switchport access vlan 10</code></pre>
-        </div>
-        
-        <div class="section">
-            <h2>4. Trunk Ports</h2>
-            <pre><code class="command">configure terminal
-interface g0/1
- switchport mode trunk
- switchport trunk allowed vlan 10,20
- no shutdown
-exit</code></pre>
-            <div class="verify">
-                <h2>Verify:</h2>
-                <pre><code class="command">show interfaces trunk</code></pre>
-            </div>
-        </div>
-        
-        <div class="section">
-            <h2>5. Switch Management IP (SVI)</h2>
-            <pre><code class="command">configure terminal
-interface vlan 10
- ip address 192.168.10.2 255.255.255.0
- no shutdown
-exit
-ip default-gateway 192.168.10.1</code></pre>
-        </div>
-        
-        <div class="section">
-            <h2>6. Router Basics</h2>
-            <pre><code class="command">enable
-configure terminal
-hostname R1
-no ip domain-lookup</code></pre>
-            <p class="comment">Interface:</p>
-            <pre><code class="command">interface g0/0
- ip address 192.168.1.1 255.255.255.0
- no shutdown
-exit</code></pre>
-            <div class="verify">
-                <h2>Verify:</h2>
-                <pre><code class="command">show ip interface brief</code></pre>
-            </div>
-        </div>
-        
-        <div class="section">
-            <h2>7. Router-on-a-Stick (Inter-VLAN Routing)</h2>
-            <pre><code class="command">configure terminal
-interface g0/0
- no shutdown
-exit</code></pre>
-            <p class="comment">VLAN subinterfaces:</p>
-            <pre><code class="command">interface g0/0.10
- encapsulation dot1Q 10
- ip address 192.168.10.1 255.255.255.0
-exit
-
-interface g0/0.20
- encapsulation dot1Q 20
- ip address 192.168.20.1 255.255.255.0
-exit</code></pre>
-        </div>
-        
-        <div class="section">
-            <h2>8. DHCP on Router</h2>
-            <p class="comment">Exclude gateways:</p>
-            <pre><code class="command">ip dhcp excluded-address 192.168.10.1 192.168.10.10
-ip dhcp excluded-address 192.168.20.1 192.168.20.10</code></pre>
-            <p class="comment">Pools:</p>
-            <pre><code class="command">ip dhcp pool VLAN10
+            <h2>1️⃣ DNS Server Configuration</h2>
+            <p><strong>Goal:</strong> Translate domain names → IP addresses.</p>
+            
+            <h3>Server Setup</h3>
+            <div class="step-number">1</div> <strong>Assign static IP:</strong>
+            <pre>IP: 192.168.10.10
+Subnet: 255.255.255.0
+Gateway: 192.168.10.1</pre>
+            
+            <div class="step-number">2</div> <strong>Enable DNS service on the server.</strong>
+            
+            <div class="step-number">3</div> <strong>Add records:</strong>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Hostname</th>
+                        <th>IP Address</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>www.example.com</td>
+                        <td>192.168.10.50</td>
+                    </tr>
+                    <tr>
+                        <td>mail.example.com</td>
+                        <td>192.168.10.20</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>DHCP Integration</h3>
+            <pre class="command">ip dhcp pool VLAN10
  network 192.168.10.0 255.255.255.0
  default-router 192.168.10.1
- dns-server 8.8.8.8
-exit</code></pre>
-            <pre><code class="command">ip dhcp pool VLAN20
- network 192.168.20.0 255.255.255.0
- default-router 192.168.20.1
- dns-server 8.8.8.8
-exit</code></pre>
-            <div class="verify">
-                <h2>Verify:</h2>
-                <pre><code class="command">show ip dhcp binding
-show ip dhcp pool</code></pre>
+ dns-server 192.168.10.10</pre>
+            
+            <h3>Test</h3>
+            <pre>PC> ping www.example.com
+PC> nslookup www.example.com</pre>
+        </div>
+        
+        <div class="section">
+            <h2>2️⃣ Email Server Configuration</h2>
+            <p><strong>Goal:</strong> Send/receive emails.</p>
+            
+            <h3>Server Setup</h3>
+            <div class="step-number">1</div> <strong>Assign static IP:</strong>
+            <pre>IP: 192.168.10.20
+Subnet: 255.255.255.0
+Gateway: 192.168.10.1</pre>
+            
+            <div class="step-number">2</div> <strong>Enable services:</strong>
+            <ul class="checklist">
+                <li><strong>SMTP:</strong> Outgoing mail</li>
+                <li><strong>POP3:</strong> Incoming mail</li>
+            </ul>
+            
+            <div class="step-number">3</div> <strong>Set domain and users:</strong>
+            <pre>Domain: example.com
+Users: user1@example.com, user2@example.com</pre>
+            
+            <h3>Client Setup</h3>
+            <pre>Incoming Server: 192.168.10.20 (POP3)
+Outgoing Server: 192.168.10.20 (SMTP)
+Username/password: user1/password</pre>
+            
+            <h3>Test</h3>
+            <ul class="checklist">
+                <li>Send email from PC1 → PC2</li>
+                <li>Check delivery in PC2 client inbox</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2>3️⃣ Quick Troubleshooting</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Problem</th>
+                        <th>Command / Check</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>PC cannot resolve DNS</td>
+                        <td><code>ping DNS_IP</code> / <code>nslookup</code></td>
+                    </tr>
+                    <tr>
+                        <td>DHCP clients not getting DNS</td>
+                        <td>Check <code>ip dhcp pool</code> → <code>dns-server</code></td>
+                    </tr>
+                    <tr>
+                        <td>Email not sending</td>
+                        <td>Check SMTP is enabled, check firewall (Packet Tracer: usually off)</td>
+                    </tr>
+                    <tr>
+                        <td>Email not receiving</td>
+                        <td>Check POP3 is enabled, client configured correctly</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="section tip">
+            <h2>✅ Tips / Best Practices</h2>
+            <ul class="checklist">
+                <li>Always use static IP for servers.</li>
+                <li>Put DNS first, then email.</li>
+                <li>DHCP can automatically hand out DNS to clients.</li>
+                <li>If multiple VLANs → use router-on-a-stick + trunk to connect clients to servers.</li>
+                <li>Test each step before moving to the next.</li>
+            </ul>
+        </div>
+        
+        <!-- Original configurations from first document -->
+        <div class="section">
+            <h2>Switch & Router Basics</h2>
+            <div class="grid">
+                <div class="grid-item">
+                    <h3>Switch Basics (Layer 2)</h3>
+                    <pre class="command">enable
+configure terminal
+hostname SW1
+no ip domain-lookup</pre>
+                </div>
+                
+                <div class="grid-item">
+                    <h3>VLANs</h3>
+                    <pre class="command">vlan 10
+ name USERS
+vlan 20
+ name SERVERS</pre>
+                </div>
+                
+                <div class="grid-item">
+                    <h3>Access Ports</h3>
+                    <pre class="command">interface f0/1
+ switchport mode access
+ switchport access vlan 10
+ no shutdown</pre>
+                </div>
+                
+                <div class="grid-item">
+                    <h3>Trunk Ports</h3>
+                    <pre class="command">interface g0/1
+ switchport mode trunk
+ switchport trunk allowed vlan 10,20
+ no shutdown</pre>
+                </div>
+                
+                <div class="grid-item">
+                    <h3>Router-on-a-Stick</h3>
+                    <pre class="command">interface g0/0.10
+ encapsulation dot1Q 10
+ ip address 192.168.10.1 255.255.255.0</pre>
+                </div>
+                
+                <div class="grid-item">
+                    <h3>DHCP Configuration</h3>
+                    <pre class="command">ip dhcp pool VLAN10
+ network 192.168.10.0 255.255.255.0
+ default-router 192.168.10.1
+ dns-server 8.8.8.8</pre>
+                </div>
             </div>
         </div>
         
         <div class="section">
-            <h2>9. Static Routing</h2>
-            <p class="comment">Default route:</p>
-            <pre><code class="command">ip route 0.0.0.0 0.0.0.0 192.168.1.254</code></pre>
-            <p class="comment">Specific route:</p>
-            <pre><code class="command">ip route 10.0.0.0 255.255.255.0 192.168.1.2</code></pre>
-            <div class="verify">
-                <h2>Verify:</h2>
-                <pre><code class="command">show ip route</code></pre>
-            </div>
-        </div>
-        
-        <div class="section">
-            <h2>10. PC Side (Packet Tracer)</h2>
-            <p><strong>DHCP</strong></p>
-            <p>Desktop → IP Configuration → DHCP</p>
-            <p><strong>Static</strong></p>
-            <pre><code>IP Address: 192.168.10.50
-Subnet Mask: 255.255.255.0
-Default Gateway: 192.168.10.1
-DNS: 8.8.8.8</code></pre>
-        </div>
-        
-        <div class="section">
-            <h2>11. Verification Commands (Spam These)</h2>
-            <pre><code class="command">ping 192.168.10.1
-ping 192.168.20.1
-ping 8.8.8.8
-
-show vlan brief
+            <h2>Verification Commands</h2>
+            <pre class="command">show vlan brief
 show interfaces trunk
 show ip interface brief
-show running-config</code></pre>
-        </div>
-        
-        <div class="section emergency">
-            <h2>12. Emergency Fix Checklist (aka "why isn't it working")</h2>
-            <pre><code class="command">show interfaces status
-show vlan brief
-show ip route
-show ip dhcp binding</code></pre>
+show running-config
+show ip dhcp binding
+show ip route</pre>
+            
             <div class="note">
-                <p><strong>Check for:</strong></p>
+                <h3>Emergency Fix Checklist</h3>
+                <p>Check for common issues:</p>
                 <ul class="checklist">
                     <li>Missing <code>no shutdown</code></li>
-                    <li>Wrong VLAN</li>
+                    <li>Wrong VLAN assignment</li>
                     <li>Trunk not trunking</li>
                     <li>Gateway mismatch</li>
                     <li>DHCP network mismatch</li>
@@ -353,8 +403,8 @@ show ip dhcp binding</code></pre>
     </main>
     
     <footer>
-        <p>Network Configuration Cheat Sheet | For Cisco IOS devices</p>
-        <p>Commands may vary slightly depending on IOS version</p>
+        <p>Network Services Configuration Cheat Sheet | For Cisco Packet Tracer and real IOS devices</p>
+        <p>Commands may vary slightly depending on device model and IOS version</p>
     </footer>
 </body>
 </html>
