@@ -1,410 +1,549 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Network Services Configuration Cheat Sheet</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        }
-        
-        body {
-            background-color: #f5f7fa;
-            color: #333;
-            line-height: 1.6;
-            padding: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        header {
-            margin-bottom: 30px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid #3498db;
-        }
-        
-        h1 {
-            color: #2c3e50;
-            margin-bottom: 5px;
-        }
-        
-        .subtitle {
-            color: #7f8c8d;
-            font-size: 1.1rem;
-        }
-        
-        .section {
-            background-color: white;
-            border-radius: 6px;
-            padding: 20px;
-            margin-bottom: 20px;
-            border: 1px solid #e1e8ed;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-        }
-        
-        h2 {
-            color: #2980b9;
-            margin-bottom: 15px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid #ecf0f1;
-            font-size: 1.3rem;
-        }
-        
-        h3 {
-            color: #2c3e50;
-            margin: 15px 0 10px 0;
-            font-size: 1.1rem;
-        }
-        
-        pre, code {
-            background-color: #f8f9fa;
-            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
-            border-radius: 4px;
-        }
-        
-        pre {
-            padding: 15px;
-            overflow-x: auto;
-            margin: 10px 0;
-            border: 1px solid #e1e8ed;
-        }
-        
-        code {
-            padding: 2px 6px;
-            font-size: 0.9rem;
-            color: #c7254e;
-        }
-        
-        .command {
-            color: #2980b9;
-        }
-        
-        .note {
-            background-color: #f8f9fa;
-            padding: 12px;
-            border-radius: 4px;
-            margin-top: 15px;
-            border-left: 4px solid #3498db;
-        }
-        
-        .warning {
-            background-color: #fff3cd;
-            padding: 12px;
-            border-radius: 4px;
-            margin-top: 15px;
-            border-left: 4px solid #ffc107;
-        }
-        
-        .tip {
-            background-color: #d1ecf1;
-            padding: 12px;
-            border-radius: 4px;
-            margin-top: 15px;
-            border-left: 4px solid #17a2b8;
-        }
-        
-        .checklist {
-            margin-left: 20px;
-            margin-top: 10px;
-        }
-        
-        .checklist li {
-            margin-bottom: 8px;
-            position: relative;
-            padding-left: 25px;
-        }
-        
-        .checklist li::before {
-            content: "✓";
-            color: #27ae60;
-            position: absolute;
-            left: 0;
-            font-weight: bold;
-        }
-        
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 15px 0;
-            background-color: white;
-        }
-        
-        th {
-            background-color: #f8f9fa;
-            font-weight: 600;
-            text-align: left;
-            padding: 12px;
-            border-bottom: 2px solid #e1e8ed;
-        }
-        
-        td {
-            padding: 10px 12px;
-            border-bottom: 1px solid #e1e8ed;
-        }
-        
-        .step-number {
-            display: inline-block;
-            background-color: #3498db;
-            color: white;
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 24px;
-            margin-right: 10px;
-            font-size: 0.9rem;
-            font-weight: bold;
-        }
-        
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-        
-        .grid-item {
-            background-color: white;
-            padding: 15px;
-            border-radius: 6px;
-            border: 1px solid #e1e8ed;
-        }
-        
-        footer {
-            text-align: center;
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #ecf0f1;
-            color: #7f8c8d;
-            font-size: 0.9rem;
-        }
-        
-        @media (max-width: 768px) {
-            body {
-                padding: 15px;
-            }
-            
-            .section {
-                padding: 15px;
-            }
-            
-            pre {
-                font-size: 0.85rem;
-                padding: 12px;
-            }
-            
-            .grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CodeIgniter 4 Exam Cheat Sheet</title>
+  <style>
+    :root {
+      --bg: #f6f8fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --line: #e5e7eb;
+      --accent: #2563eb;
+      --code-bg: #111827;
+      --code-text: #e5e7eb;
+      --warn-bg: #fff7ed;
+      --warn-line: #fb923c;
+      --ok-bg: #ecfdf5;
+      --ok-line: #10b981;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1e3a8a, #2563eb);
+      color: white;
+      padding: 48px 24px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0 0 10px;
+      font-size: 2.4rem;
+    }
+
+    header p {
+      margin: 0;
+      color: #dbeafe;
+      font-size: 1.05rem;
+    }
+
+    nav {
+      background: white;
+      border-bottom: 1px solid var(--line);
+      padding: 14px 24px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      text-align: center;
+    }
+
+    nav a {
+      color: var(--accent);
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: bold;
+      font-size: 0.95rem;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 28px auto;
+      padding: 0 18px;
+    }
+
+    section {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 24px;
+      margin-bottom: 22px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.04);
+    }
+
+    h2 {
+      margin-top: 0;
+      color: #111827;
+      border-bottom: 2px solid var(--line);
+      padding-bottom: 8px;
+    }
+
+    h3 {
+      margin-bottom: 8px;
+      color: #1e3a8a;
+    }
+
+    code {
+      background: #eef2ff;
+      color: #1e3a8a;
+      padding: 2px 5px;
+      border-radius: 5px;
+    }
+
+    pre {
+      background: var(--code-bg);
+      color: var(--code-text);
+      padding: 16px;
+      border-radius: 12px;
+      overflow-x: auto;
+      font-size: 0.92rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+
+    .box {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 16px;
+      background: #fafafa;
+    }
+
+    .ok {
+      background: var(--ok-bg);
+      border-left: 5px solid var(--ok-line);
+      padding: 14px;
+      border-radius: 8px;
+    }
+
+    .warn {
+      background: var(--warn-bg);
+      border-left: 5px solid var(--warn-line);
+      padding: 14px;
+      border-radius: 8px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+    }
+
+    th, td {
+      border: 1px solid var(--line);
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background: #f3f4f6;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: var(--muted);
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Network Services Configuration Cheat Sheet</h1>
-        <p class="subtitle">Cisco Switch, Router, DNS, and Email Server Configurations</p>
-    </header>
-    
-    <main>
-        <div class="section">
-            <h2>1️⃣ DNS Server Configuration</h2>
-            <p><strong>Goal:</strong> Translate domain names → IP addresses.</p>
-            
-            <h3>Server Setup</h3>
-            <div class="step-number">1</div> <strong>Assign static IP:</strong>
-            <pre>IP: 192.168.10.10
-Subnet: 255.255.255.0
-Gateway: 192.168.10.1</pre>
-            
-            <div class="step-number">2</div> <strong>Enable DNS service on the server.</strong>
-            
-            <div class="step-number">3</div> <strong>Add records:</strong>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Hostname</th>
-                        <th>IP Address</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>www.example.com</td>
-                        <td>192.168.10.50</td>
-                    </tr>
-                    <tr>
-                        <td>mail.example.com</td>
-                        <td>192.168.10.20</td>
-                    </tr>
-                </tbody>
-            </table>
-            
-            <h3>DHCP Integration</h3>
-            <pre class="command">ip dhcp pool VLAN10
- network 192.168.10.0 255.255.255.0
- default-router 192.168.10.1
- dns-server 192.168.10.10</pre>
-            
-            <h3>Test</h3>
-            <pre>PC> ping www.example.com
-PC> nslookup www.example.com</pre>
-        </div>
-        
-        <div class="section">
-            <h2>2️⃣ Email Server Configuration</h2>
-            <p><strong>Goal:</strong> Send/receive emails.</p>
-            
-            <h3>Server Setup</h3>
-            <div class="step-number">1</div> <strong>Assign static IP:</strong>
-            <pre>IP: 192.168.10.20
-Subnet: 255.255.255.0
-Gateway: 192.168.10.1</pre>
-            
-            <div class="step-number">2</div> <strong>Enable services:</strong>
-            <ul class="checklist">
-                <li><strong>SMTP:</strong> Outgoing mail</li>
-                <li><strong>POP3:</strong> Incoming mail</li>
-            </ul>
-            
-            <div class="step-number">3</div> <strong>Set domain and users:</strong>
-            <pre>Domain: example.com
-Users: user1@example.com, user2@example.com</pre>
-            
-            <h3>Client Setup</h3>
-            <pre>Incoming Server: 192.168.10.20 (POP3)
-Outgoing Server: 192.168.10.20 (SMTP)
-Username/password: user1/password</pre>
-            
-            <h3>Test</h3>
-            <ul class="checklist">
-                <li>Send email from PC1 → PC2</li>
-                <li>Check delivery in PC2 client inbox</li>
-            </ul>
-        </div>
-        
-        <div class="section">
-            <h2>3️⃣ Quick Troubleshooting</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Problem</th>
-                        <th>Command / Check</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>PC cannot resolve DNS</td>
-                        <td><code>ping DNS_IP</code> / <code>nslookup</code></td>
-                    </tr>
-                    <tr>
-                        <td>DHCP clients not getting DNS</td>
-                        <td>Check <code>ip dhcp pool</code> → <code>dns-server</code></td>
-                    </tr>
-                    <tr>
-                        <td>Email not sending</td>
-                        <td>Check SMTP is enabled, check firewall (Packet Tracer: usually off)</td>
-                    </tr>
-                    <tr>
-                        <td>Email not receiving</td>
-                        <td>Check POP3 is enabled, client configured correctly</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        
-        <div class="section tip">
-            <h2>✅ Tips / Best Practices</h2>
-            <ul class="checklist">
-                <li>Always use static IP for servers.</li>
-                <li>Put DNS first, then email.</li>
-                <li>DHCP can automatically hand out DNS to clients.</li>
-                <li>If multiple VLANs → use router-on-a-stick + trunk to connect clients to servers.</li>
-                <li>Test each step before moving to the next.</li>
-            </ul>
-        </div>
-        
-        <!-- Original configurations from first document -->
-        <div class="section">
-            <h2>Switch & Router Basics</h2>
-            <div class="grid">
-                <div class="grid-item">
-                    <h3>Switch Basics (Layer 2)</h3>
-                    <pre class="command">enable
-configure terminal
-hostname SW1
-no ip domain-lookup</pre>
-                </div>
-                
-                <div class="grid-item">
-                    <h3>VLANs</h3>
-                    <pre class="command">vlan 10
- name USERS
-vlan 20
- name SERVERS</pre>
-                </div>
-                
-                <div class="grid-item">
-                    <h3>Access Ports</h3>
-                    <pre class="command">interface f0/1
- switchport mode access
- switchport access vlan 10
- no shutdown</pre>
-                </div>
-                
-                <div class="grid-item">
-                    <h3>Trunk Ports</h3>
-                    <pre class="command">interface g0/1
- switchport mode trunk
- switchport trunk allowed vlan 10,20
- no shutdown</pre>
-                </div>
-                
-                <div class="grid-item">
-                    <h3>Router-on-a-Stick</h3>
-                    <pre class="command">interface g0/0.10
- encapsulation dot1Q 10
- ip address 192.168.10.1 255.255.255.0</pre>
-                </div>
-                
-                <div class="grid-item">
-                    <h3>DHCP Configuration</h3>
-                    <pre class="command">ip dhcp pool VLAN10
- network 192.168.10.0 255.255.255.0
- default-router 192.168.10.1
- dns-server 8.8.8.8</pre>
-                </div>
-            </div>
-        </div>
-        
-        <div class="section">
-            <h2>Verification Commands</h2>
-            <pre class="command">show vlan brief
-show interfaces trunk
-show ip interface brief
-show running-config
-show ip dhcp binding
-show ip route</pre>
-            
-            <div class="note">
-                <h3>Emergency Fix Checklist</h3>
-                <p>Check for common issues:</p>
-                <ul class="checklist">
-                    <li>Missing <code>no shutdown</code></li>
-                    <li>Wrong VLAN assignment</li>
-                    <li>Trunk not trunking</li>
-                    <li>Gateway mismatch</li>
-                    <li>DHCP network mismatch</li>
-                </ul>
-            </div>
-        </div>
-    </main>
-    
-    <footer>
-        <p>Network Services Configuration Cheat Sheet | For Cisco Packet Tracer and real IOS devices</p>
-        <p>Commands may vary slightly depending on device model and IOS version</p>
-    </footer>
+
+<header>
+  <h1>CodeIgniter 4 Exam Cheat Sheet</h1>
+  <p>Setup app → connect database → read data → display on web page</p>
+</header>
+
+<nav>
+  <a href="#goal">Goal</a>
+  <a href="#structure">Structure</a>
+  <a href="#database">Database</a>
+  <a href="#env">.env</a>
+  <a href="#routes">Routes</a>
+  <a href="#model">Model</a>
+  <a href="#controller">Controller</a>
+  <a href="#view">View</a>
+  <a href="#errors">Errors</a>
+</nav>
+
+<main>
+
+<section id="goal">
+  <h2>1. What the exam task means</h2>
+  <p>
+    The task usually means: create or open a <strong>CodeIgniter 4</strong> project,
+    connect it to a MySQL database, fetch records from a table, and display them in a page.
+  </p>
+
+  <div class="ok">
+    <strong>Main flow:</strong>
+    Browser → Route → Controller → Model → Database → View → Web page
+  </div>
+
+  <h3>Most important concepts</h3>
+  <div class="grid">
+    <div class="box"><strong>Route</strong><br>Defines which URL calls which controller method.</div>
+    <div class="box"><strong>Controller</strong><br>Controls the logic and sends data to the view.</div>
+    <div class="box"><strong>Model</strong><br>Represents a database table.</div>
+    <div class="box"><strong>View</strong><br>HTML page that displays the data.</div>
+  </div>
+</section>
+
+<section id="structure">
+  <h2>2. CodeIgniter 4 file structure you need</h2>
+  <pre><code>app/
+├── Config/
+│   └── Routes.php
+├── Controllers/
+│   └── Students.php
+├── Models/
+│   └── StudentModel.php
+└── Views/
+    └── students.php
+
+.env
+database.sql</code></pre>
+
+  <div class="warn">
+    <strong>Important:</strong> CodeIgniter 4 is not the same as CodeIgniter 3.
+    Avoid exam examples using <code>CI_Controller</code>, <code>CI_Model</code>, or <code>$this-&gt;load</code>.
+  </div>
+</section>
+
+<section id="database">
+  <h2>3. Database SQL example</h2>
+  <p>Create a database and table. Example table: <code>students</code>.</p>
+
+  <pre><code>CREATE DATABASE school;
+
+USE school;
+
+CREATE TABLE students (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  email VARCHAR(100) NOT NULL
+);
+
+INSERT INTO students (name, email)
+VALUES
+('Ana', 'ana@test.com'),
+('Marko', 'marko@test.com'),
+('Sara', 'sara@test.com');</code></pre>
+</section>
+
+<section id="env">
+  <h2>4. Database connection in .env</h2>
+  <p>In CodeIgniter 4, database settings are usually placed in the <code>.env</code> file.</p>
+
+  <pre><code>CI_ENVIRONMENT = development
+
+database.default.hostname = localhost
+database.default.database = school
+database.default.username = root
+database.default.password =
+database.default.DBDriver = MySQLi
+database.default.port = 3306</code></pre>
+
+  <div class="warn">
+    If the database does not connect, check database name, username, password, and whether MySQL is running.
+  </div>
+</section>
+
+<section id="routes">
+  <h2>5. Route pattern</h2>
+  <p>File: <code>app/Config/Routes.php</code></p>
+
+  <pre><code>$routes-&gt;get('/students', 'Students::index');</code></pre>
+
+  <table>
+    <tr>
+      <th>Part</th>
+      <th>Meaning</th>
+    </tr>
+    <tr>
+      <td><code>/students</code></td>
+      <td>The URL path in the browser.</td>
+    </tr>
+    <tr>
+      <td><code>Students</code></td>
+      <td>The controller class.</td>
+    </tr>
+    <tr>
+      <td><code>index</code></td>
+      <td>The method/function inside the controller.</td>
+    </tr>
+  </table>
+</section>
+
+<section id="model">
+  <h2>6. Model pattern</h2>
+  <p>File: <code>app/Models/StudentModel.php</code></p>
+
+  <pre><code>&lt;?php
+
+namespace App\Models;
+
+use CodeIgniter\Model;
+
+class StudentModel extends Model
+{
+    protected $table = 'students';
+    protected $primaryKey = 'id';
+    protected $allowedFields = ['name', 'email'];
+}</code></pre>
+
+  <h3>Important model methods</h3>
+  <table>
+    <tr>
+      <th>Method</th>
+      <th>Use</th>
+    </tr>
+    <tr>
+      <td><code>findAll()</code></td>
+      <td>Gets all rows.</td>
+    </tr>
+    <tr>
+      <td><code>find($id)</code></td>
+      <td>Gets one row by ID.</td>
+    </tr>
+    <tr>
+      <td><code>insert($data)</code></td>
+      <td>Adds a new row.</td>
+    </tr>
+    <tr>
+      <td><code>update($id, $data)</code></td>
+      <td>Updates a row.</td>
+    </tr>
+    <tr>
+      <td><code>delete($id)</code></td>
+      <td>Deletes a row.</td>
+    </tr>
+  </table>
+</section>
+
+<section id="controller">
+  <h2>7. Controller pattern</h2>
+  <p>File: <code>app/Controllers/Students.php</code></p>
+
+  <pre><code>&lt;?php
+
+namespace App\Controllers;
+
+use App\Models\StudentModel;
+
+class Students extends BaseController
+{
+    public function index()
+    {
+        $model = new StudentModel();
+
+        $data = [
+            'students' =&gt; $model-&gt;findAll()
+        ];
+
+        return view('students', $data);
+    }
+}</code></pre>
+
+  <h3>What this does</h3>
+  <ul>
+    <li><code>use App\Models\StudentModel;</code> imports the model.</li>
+    <li><code>$model = new StudentModel();</code> creates the model object.</li>
+    <li><code>$model-&gt;findAll()</code> gets all students from the database.</li>
+    <li><code>return view('students', $data);</code> opens the view and sends data to it.</li>
+  </ul>
+</section>
+
+<section id="view">
+  <h2>8. View pattern</h2>
+  <p>File: <code>app/Views/students.php</code></p>
+
+  <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Students&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;h1&gt;Students&lt;/h1&gt;
+
+&lt;?php foreach ($students as $student): ?&gt;
+    &lt;p&gt;
+        &lt;?= esc($student['name']) ?&gt;
+        -
+        &lt;?= esc($student['email']) ?&gt;
+    &lt;/p&gt;
+&lt;?php endforeach; ?&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+  <div class="ok">
+    Use <code>esc()</code> when printing user/database data. It helps prevent unsafe HTML output.
+  </div>
+</section>
+
+<section id="full">
+  <h2>9. Full minimal pattern to memorize</h2>
+
+  <h3>Route</h3>
+  <pre><code>$routes-&gt;get('/students', 'Students::index');</code></pre>
+
+  <h3>Model</h3>
+  <pre><code>class StudentModel extends Model
+{
+    protected $table = 'students';
+    protected $primaryKey = 'id';
+    protected $allowedFields = ['name', 'email'];
+}</code></pre>
+
+  <h3>Controller</h3>
+  <pre><code>$model = new StudentModel();
+
+return view('students', [
+    'students' =&gt; $model-&gt;findAll()
+]);</code></pre>
+
+  <h3>View</h3>
+  <pre><code>&lt;?php foreach ($students as $student): ?&gt;
+    &lt;p&gt;&lt;?= esc($student['name']) ?&gt;&lt;/p&gt;
+&lt;?php endforeach; ?&gt;</code></pre>
+</section>
+
+<section id="crud">
+  <h2>10. Extra CRUD examples</h2>
+
+  <h3>Insert data</h3>
+  <pre><code>$model-&gt;insert([
+    'name' =&gt; 'Luka',
+    'email' =&gt; 'luka@test.com'
+]);</code></pre>
+
+  <h3>Find one row</h3>
+  <pre><code>$student = $model-&gt;find(1);</code></pre>
+
+  <h3>Update row</h3>
+  <pre><code>$model-&gt;update(1, [
+    'name' =&gt; 'Updated Name'
+]);</code></pre>
+
+  <h3>Delete row</h3>
+  <pre><code>$model-&gt;delete(1);</code></pre>
+</section>
+
+<section id="operator">
+  <h2>11. PHP operators you will see</h2>
+
+  <table>
+    <tr>
+      <th>Operator</th>
+      <th>Meaning</th>
+      <th>Example</th>
+    </tr>
+    <tr>
+      <td><code>-&gt;</code></td>
+      <td>Access object method/property</td>
+      <td><code>$model-&gt;findAll()</code></td>
+    </tr>
+    <tr>
+      <td><code>=&gt;</code></td>
+      <td>Array key/value</td>
+      <td><code>'students' =&gt; $students</code></td>
+    </tr>
+    <tr>
+      <td><code>::</code></td>
+      <td>Static/class method reference</td>
+      <td><code>Students::index</code></td>
+    </tr>
+  </table>
+</section>
+
+<section id="errors">
+  <h2>12. Common errors and fixes</h2>
+
+  <table>
+    <tr>
+      <th>Error</th>
+      <th>Likely cause</th>
+      <th>Fix</th>
+    </tr>
+    <tr>
+      <td>404 page not found</td>
+      <td>Wrong route or controller name</td>
+      <td>Check <code>Routes.php</code> and controller class name.</td>
+    </tr>
+    <tr>
+      <td>Class not found</td>
+      <td>Wrong namespace or filename</td>
+      <td>Check <code>namespace App\Models;</code> and <code>use App\Models\StudentModel;</code>.</td>
+    </tr>
+    <tr>
+      <td>Database connection failed</td>
+      <td>Wrong <code>.env</code> details</td>
+      <td>Check database name, username, password, and MySQL server.</td>
+    </tr>
+    <tr>
+      <td>Undefined variable: students</td>
+      <td>Controller did not send data to view</td>
+      <td>Use <code>return view('students', ['students' =&gt; ...]);</code>.</td>
+    </tr>
+    <tr>
+      <td>No data displayed</td>
+      <td>Empty table or wrong table name</td>
+      <td>Check SQL data and <code>protected $table</code>.</td>
+    </tr>
+  </table>
+</section>
+
+<section id="checklist">
+  <h2>13. Exam checklist</h2>
+
+  <div class="grid">
+    <div class="box">☐ MySQL is running</div>
+    <div class="box">☐ Database exists</div>
+    <div class="box">☐ Table has data</div>
+    <div class="box">☐ <code>.env</code> database settings are correct</div>
+    <div class="box">☐ Route points to controller</div>
+    <div class="box">☐ Controller imports model</div>
+    <div class="box">☐ Model has correct table name</div>
+    <div class="box">☐ View uses correct variable name</div>
+  </div>
+</section>
+
+<section id="search">
+  <h2>14. Good Google searches during exam</h2>
+
+  <pre><code>CodeIgniter 4 model findAll example
+CodeIgniter 4 database .env MySQLi
+CodeIgniter 4 routes controller method
+CodeIgniter 4 pass data to view
+CodeIgniter 4 foreach view example
+CodeIgniter 4 esc output</code></pre>
+
+  <div class="warn">
+    Avoid broad searches like <code>CodeIgniter database tutorial</code>, because many results may be CodeIgniter 3.
+  </div>
+</section>
+
+</main>
+
+<footer>
+  CodeIgniter 4 exam reference — MVC, database connection, model, controller, view.
+</footer>
+
 </body>
 </html>
